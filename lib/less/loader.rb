@@ -16,7 +16,7 @@ module Less
       @context['console'] = Console.new
       @context['Buffer'] = Buffer
       path = Pathname(__FILE__).dirname.join('js', 'lib')
-      @environment = CommonJS::Environment.new(@context, :path => path.to_s)
+      @environment = CommonJS::Environment.new(@context, :path => Less.javascript_paths + [path.to_s])
       @environment.native('path', Path)
       @environment.native('util', Util)
       @environment.native('fs', FS)

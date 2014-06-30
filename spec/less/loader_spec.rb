@@ -42,4 +42,20 @@ describe Less::Loader do
 
   end
 
+  describe 'when javascript_paths are included in default options' do
+    let(:path) { Pathname(__FILE__).dirname.join('js') }
+
+    before { Less.javascript_paths << path }
+
+    it 'should be able to include javascript from that path' do
+      lambda { subject.environment.require 'test.js' }.should_not raise_error
+    end
+
+    it 'should be able to include javascript from lib path' do
+      lambda { subject.environment.require 'less/index' }.should_not raise_error
+    end
+
+    after { Less.javascript_paths.delete path }
+  end
+
 end
