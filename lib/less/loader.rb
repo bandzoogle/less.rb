@@ -28,6 +28,10 @@ module Less
       @environment.require(module_id)
     end
 
+    def add_javascript_path(path)
+      @environment.add_path(path)
+    end
+
     # JS exports (required by less.js) :
 
     class Process # :nodoc:

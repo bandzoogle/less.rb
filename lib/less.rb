@@ -8,8 +8,8 @@ require 'less/java_script'
 
 module Less
   extend Less::Defaults
-  
-  # NOTE: keep the @loader as less-rails depends on 
+
+  # NOTE: keep the @loader as less-rails depends on
   # it as it overrides some less/tree.js functions!
   @loader = Less::Loader.new
   @less = @loader.require('less/index')
@@ -17,7 +17,7 @@ module Less
   def self.[](name)
     @less[name]
   end
-  
+
   # exposes less.Parser
   def self.Parser
     self['Parser']
@@ -28,5 +28,9 @@ module Less
   def self.tree
     self['tree']
   end
-  
+
+  def self.add_javascript_path(path)
+    @loader.add_javascript_path(path)
+  end
+
 end
